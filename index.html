@@ -1,0 +1,45 @@
+<script type="text/javascript">
+	function getLocation(){
+        var options={
+            enableHighAccuracy:true, 
+            maximumAge:1000
+        }
+        if(navigator.geolocation){
+            console.log('支持')
+            //浏览器支持geolocation
+            navigator.geolocation.getCurrentPosition(onSuccess,onError,options);
+        }else{
+            //浏览器不支持geolocation
+            console.log('不支持')
+        }
+    }
+    //成功时
+    function onSuccess(position) {
+
+        //经度
+        longitude = position.coords.longitude;
+
+        //纬度
+        latitude = position.coords.latitude;
+    }
+
+    //失败时
+    function onError(error) {
+        switch (error.code) {
+            case 1:
+                alert("位置服务被拒绝");
+                break;
+
+            case 2:
+                alert("暂时获取不到位置信息");
+                break;
+
+            case 3:
+                alert("获取信息超时");
+                break;
+
+            case 4:
+                alert("未知错误");
+                break;
+        }
+</script>
