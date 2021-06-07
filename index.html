@@ -12,8 +12,9 @@
             font-family: "微软雅黑";
         }
     </style>
-    <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=VRcoYrjWgBXSXYXjkyNYHHuGZg4z2d1L"></script>
     <title>GPS定位</title>
+    <div id='lat'>12123</div>
+    <div id='longt'>sdcsd</div>
 </head>
 <body onload="theLocation()">
 <div id="allmap"></div>
@@ -48,25 +49,10 @@
 
         //纬度
         latitude = position.coords.latitude;
-        // 百度地图API功能
-        var ggPoint = new BMap.Point(longitude, latitude);
-        var bm = new BMap.Map("allmap");
-        bm.centerAndZoom(ggPoint, 17);	//地图放大倍数
-        //坐标转换完之后的回调函数
-        translateCallback = function (data) {
-            if (data.status === 0) {
-                console.log('成功')
-                var marker = new BMap.Marker(data.points[0]);
-                bm.addOverlay(marker);
-                bm.setCenter(data.points[0]);
-            }
-        }
-        setTimeout(function () {
-            var convertor = new BMap.Convertor();
-            var pointArr = [];
-            pointArr.push(ggPoint);
-            convertor.translate(pointArr, 1, 5, translateCallback)
-        }, 0);
+
+        document.getElementById("lat").innerHTML = latitude;
+        document.getElementById("longt").innerHTML = longitude;
+
     }
 
     //失败时
