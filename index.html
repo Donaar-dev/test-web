@@ -3,21 +3,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-    <style type="text/css">
-        body, html, #allmap {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            margin: 0;
-            font-family: "微软雅黑";
-        }
-    </style>
     <title>GPS定位</title>
-    <div id='lat'>12123</div>
-    <div id='longt'>sdcsd</div>
+    <div id='lat'>纬度</div>
+    <div id='longt'>经度</div>
 </head>
 <body onload="theLocation()">
-<div id="allmap"></div>
 </body>
 
 <script type="text/javascript">
@@ -28,7 +18,8 @@
     function theLocation() {
         var options = {
             enableHighAccuracy: true,
-            maximumAge: 1000
+            maximumAge: 60000
+            // 接受60秒内的缓存位置。
         }
         if (navigator.geolocation) {
             console.log('支持')
